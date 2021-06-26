@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { Login } from "../components/pages/Login";
 import { homeRoutes } from "./HomeRoutes";
+import { Page404 } from "../components/pages/Page404";
 
 export const Router: FC = memo(() => {
   return (
@@ -10,7 +11,7 @@ export const Router: FC = memo(() => {
       <Route exact path="/">
         <Login />
       </Route>
-      <Router
+      <Route
         path="/home"
         render={({ match: { url } }) => (
           <Switch>
@@ -26,6 +27,9 @@ export const Router: FC = memo(() => {
           </Switch>
         )}
       />
+      <Route path="*">
+        <Page404 />
+      </Route>
     </Switch>
   );
 });
